@@ -6,32 +6,34 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 13:17:51 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/07/09 17:00:31 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/07/10 17:03:08 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft/libft.h"
+#include "push_swap.h"
 
-int		checker(stack *a)
+int		checker(t_stack *a, t_stack *b)
 {
 	char *instr;
+
 	while (get_next_line(0, &instr) == 1)
 	{
-		if (instr ==  "sa" || instr == "sb" || instr == "ss")
+		if (ft_strcmp(instr, "sa") == 0 || ft_strcmp(instr, "sb") == 0 || ft_strcmp(instr, "ss") == 0)
 			ft_swab(a, b, instr);
-		else if (instr == "pa" || instr == "pb")
+		else if (ft_strcmp(instr, "pa") == 0 || ft_strcmp(instr, "pb") == 0)
 			ft_push(a, b, instr);
-		else if (instr == "ra" || instr == "rb" || instr == "rr")
-			ft_rotate(a, b, instr);
-		else if (instr == "rra" || instr == "rrb" || instr == "rrr")
-			ft_reverse(a, b, instr);
+		/*else if (ft_strcmp(instr, "ra") || ft_strcmp(instr, "rb") || ft_strcmp(instr, "rr"))
+			a = ft_rotate(a, b, instr);
+		else if (ft_strcmp(instr, "rra") || ft_strcmp(instr, "rrb") || ft_strcmp(instr, "rrr"))
+			a = ft_reverse(a, b, instr);*/
 	}
+	return (0);
 }
 
 int main(int argc, char **argv)
 {
-	stack *a;
+	t_stack *a;
+	t_stack *b;
 	int i;
 
 	i = 1;
@@ -39,13 +41,14 @@ int main(int argc, char **argv)
 		return (0);
 	else
 	{
-		a = newstack(a);
+		a = newstack(argc);
+		b = newstack(argc);
 		while (argv[i])
 		{
-			addstack(argv[i], &a);
+			addstack(a, ft_atoi(argv[i]));
 			i++;
 		}
-	checker(a);
+	checker(a, b);
 	}
 	return (0);
 }
