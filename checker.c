@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 13:17:51 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/07/10 17:03:08 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/07/12 14:09:05 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int		checker(t_stack *a, t_stack *b)
 			ft_swab(a, b, instr);
 		else if (ft_strcmp(instr, "pa") == 0 || ft_strcmp(instr, "pb") == 0)
 			ft_push(a, b, instr);
-		/*else if (ft_strcmp(instr, "ra") || ft_strcmp(instr, "rb") || ft_strcmp(instr, "rr"))
-			a = ft_rotate(a, b, instr);
-		else if (ft_strcmp(instr, "rra") || ft_strcmp(instr, "rrb") || ft_strcmp(instr, "rrr"))
+		else if (ft_strcmp(instr, "ra") || ft_strcmp(instr, "rb") || ft_strcmp(instr, "rr"))
+			ft_rotate(a, b, instr);
+		/*else if (ft_strcmp(instr, "rra") || ft_strcmp(instr, "rrb") || ft_strcmp(instr, "rrr"))
 			a = ft_reverse(a, b, instr);*/
 	}
 	return (0);

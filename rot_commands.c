@@ -1,23 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_commands.c                                    :+:      :+:    :+:   */
+/*   rot_commands.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/10 16:13:43 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/07/12 14:01:43 by lmhlanga         ###   ########.fr       */
+/*   Created: 2019/07/12 13:36:32 by lmhlanga          #+#    #+#             */
+/*   Updated: 2019/07/12 14:24:57 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_push(t_stack *a, t_stack *b, char *instr)
+void	ft_rot(t_stack *a)
 {
-	if (ft_strcmp(instr, "pa") == 0)
-		if (isEmpty(b) == 0)
-			addstack(a, b->data[a->top]);
-	if (ft_strcmp(instr, "pb") == 0)
-		if (isEmpty(a) == 0)
-			addstack(b, a->data[b->top]);
+	int tmp;
+	int count;
+
+	count = 0;
+	if (isEmpty(a) == 0)
+	{
+		tmp = a->data[0];
+		while (count < a->top)
+		{
+			a->data[count] = a->data[count + 1];
+			count++;
+		}
+		a->data[count] = tmp;
+	}
+}
+
+void	ft_rotate(t_stack *a, t_stack *b, char *instr)
+{
+	if (ft_strcmp(instr, "ra") == 0)
+		ft_rot(a);
+	else if (ft_strcmp(instr, "rb"))
+		ft_rot(b);
+	else
+	{
+		ft_rot(a);
+		ft_rot(b);
+	}
 }
