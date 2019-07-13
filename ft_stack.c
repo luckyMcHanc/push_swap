@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/10 10:56:01 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/07/10 17:09:04 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/07/13 14:40:37 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,30 @@ t_stack		*newstack(int cap)
 	return (newst);
 }
 
+void		printStack(t_stack *a)
+{
+	int i;
+
+	i = 0;
+
+	while (i <= a->top)
+	{
+		ft_putnbr(a->data[i]);
+		ft_putstr(" ");
+		i++;
+	}
+}
+
 int			isEmpty(t_stack *a)
 {
 	return (a->top == -1);
 }
+
 int			isFull(t_stack *a)
 {
 	return (a->top == a->max - 1);
 }
+
 void		*addstack(t_stack *a, int x)
 {
 	if (isFull(a) == 0)

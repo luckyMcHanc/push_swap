@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 13:27:08 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/07/12 14:01:23 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/07/13 11:41:07 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ void			*ft_swab(t_stack *a, t_stack  *b, char *instr);
 int				isEmpty(t_stack *a);
 void			ft_push(t_stack *a, t_stack *b, char *instr);
 void			ft_rotate(t_stack *a, t_stack *b, char *instr);
+void			ft_reverse(t_stack *a, t_stack *b, char *instr);
+void			printStack(t_stack *a);
 
 #endif
