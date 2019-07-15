@@ -6,11 +6,31 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 16:55:11 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/07/13 14:48:12 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/07/15 15:45:37 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_pu(t_stack *a, t_stack *b)
+{
+	int c;
+
+	c = 0;
+	if (isempty(b) == 0)
+	{
+		addstack(a, b->data[b->top]);
+		b->top = b->top - 1;
+	}
+}
+
+void	ft_push(t_stack *a, t_stack *b, char *instr)
+{
+	if (ft_strcmp(instr, "pa") == 0)
+		ft_pu(a, b);
+	else if (ft_strcmp(instr, "pb") == 0)
+		ft_pu(b, a);
+}
 
 void	ft_swapf(t_stack *a)
 {
@@ -26,18 +46,18 @@ void	*ft_swab(t_stack *a, t_stack *b, char *instr)
 {
 	if (ft_strcmp(instr, "sa") == 0)
 	{
-		if (isEmpty(a) == 0)
+		if (isempty(a) == 0)
 			ft_swapf(a);
 	}
 	else if (ft_strcmp(instr, "sb") == 0)
 	{
 		ft_putnbr(b->top);
-		if (isEmpty(b) == 0)
+		if (isempty(b) == 0)
 			ft_swapf(b);
 	}
 	else if (ft_strcmp(instr, "ss") == 0)
 	{
-		if (isEmpty(a) == 0 && isEmpty(b) == 0)
+		if (isempty(a) == 0 && isempty(b) == 0)
 		{
 			ft_swapf(a);
 			ft_swapf(b);
