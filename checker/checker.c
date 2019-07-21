@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 13:17:51 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/07/21 12:59:18 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/07/21 17:53:04 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ int		issorted(t_stack *a)
 {
 	int i;
 	int sort;
-	
+
 	i = 0;
 	sort = -1;
-
 	while (i < a->top)
 	{
 		if (a->data[i] > a->data[i + 1])
@@ -52,86 +51,42 @@ int		checker(t_stack *a, t_stack *b)
 			break ;
 		else
 			ft_putendl("Error: invalid input");
+		free(instr);
 	}
-	if	(issorted(a))
-		ft_putendl("OK");
-	else
-		ft_putendl("KO");
-	printstack(a);
-	printstack(b);
+	issorted(a) ? ft_putendl("OK") : ft_putendl("KO");
 	return (0);
 }
 
-int		isdigit(char *a)
-{
-	int i;
-
-	i = 0;
-	while (a[i])
-	{
-		if (!(ft_atoi(a[i])))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int		isdublicate(char *a)
-{
-	int i;
-	int j;
-	int tmp;
-	char *hold;
-
-	i = 0;
-	j = 0;
-	tmp = 0;
-	hold = (char *)malloc(sizeof(char) * ft_strlen(a));
-	while (a[i])
-	{
-		hold[i] = a[i];
-		while (a[j])
-		{
-			if (a[j] == hold[i])
-				return (0);
-			j++;
-		}
-		i++;
-	}
-
-}
 int		main(int argc, char **argv)
 {
 	t_stack *a;
 	t_stack *b;
 	int		i;
+	int		hold;
 
 	i = 1;
 	if (argc < 2)
 		ft_putendl("Error: No arguments passed");
 	else
 	{
-		if (isdigit(argv[1]))
+		a = newstack(argc);
+		b = newstack(argc);
+		while (argv[i])
+			i++;
+		i--;
+		while (i)
 		{
-			if (isdublicate(argv[1]))
-			{
-				a = newstack(argc);
-				b = newstack(argc);
-				while (argv[i])
-					i++;
-				i--;
-				while (i)
-				{
-					addstack(a, ft_atoi(argv[i]));
-					i--;
-				}
-			checker(a, b);
-			}
+			if ((hold = ft_atoi(argv[i])) && isdublicate(argv))
+				addstack(a, ft_atoi(argv[i]));
 			else
-				ft_putendl("Error: arguments may contain dublicate values");
+			{
+				ft_putendl("Error: Argumnts may contain values which are not intergers or may contain dublicates");
+				free(a);
+				return (0);
+			}
+			i--;
 		}
-		else
-			ft_putendl("Error: arguments may contain values which are not integers");
+		checker(a, b);
 	}
 	return (0);
 }

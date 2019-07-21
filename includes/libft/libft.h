@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 15:25:25 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/07/09 13:32:55 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/07/21 17:10:06 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void				ft_putnbr_fd(int n, int fd);
 char				*ft_itoa(int n);
 int					ft_atoi(const char *str);
 char				*ft_strndup(const char *s1, size_t n);
+int					isdublicate(char **s);
 
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);

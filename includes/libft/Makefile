@@ -6,7 +6,7 @@
 #    By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/31 11:49:15 by lmhlanga          #+#    #+#              #
-#    Updated: 2019/07/09 13:04:05 by lmhlanga         ###   ########.fr        #
+#    Updated: 2019/07/21 16:11:29 by lmhlanga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC		= ft_atoi.c \
 		  ft_bzero.c \
 		  ft_isalnum.c \
 		  ft_isalpha.c \
+		  isdublicate.c \
 		  ft_isascii.c \
 		  ft_isdigit.c \
 		  get_next_line.c \
