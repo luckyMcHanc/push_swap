@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 13:17:51 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/07/21 17:53:04 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/07/22 15:08:20 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,31 @@ int		checker(t_stack *a, t_stack *b)
 	return (0);
 }
 
+int		adder(t_stack *a, char **s, int i)
+{
+	int hold;
+
+	hold = 0;
+	while (i)
+	{
+		if ((hold = ft_atoi(s[i])))
+			addstack(a, hold);
+		else
+		{
+			ft_putendl("Error: May contain values which are not intergers!");
+			free(a);
+			return (0);
+		}
+		i--;
+	}
+	return (1);
+}
+
 int		main(int argc, char **argv)
 {
 	t_stack *a;
 	t_stack *b;
 	int		i;
-	int		hold;
 
 	i = 1;
 	if (argc < 2)
@@ -74,19 +93,13 @@ int		main(int argc, char **argv)
 		while (argv[i])
 			i++;
 		i--;
-		while (i)
+		if (isdublicate(argv))
 		{
-			if ((hold = ft_atoi(argv[i])) && isdublicate(argv))
-				addstack(a, ft_atoi(argv[i]));
-			else
-			{
-				ft_putendl("Error: Argumnts may contain values which are not intergers or may contain dublicates");
-				free(a);
-				return (0);
-			}
-			i--;
+			if (adder(a, argv, i))
+				checker(a, b);
 		}
-		checker(a, b);
+		else
+			ft_putendl("Error: May Contain dublicate values!");
 	}
 	return (0);
 }
