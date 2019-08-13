@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 13:17:51 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/07/22 15:08:20 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/13 13:29:33 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,34 +47,12 @@ int		checker(t_stack *a, t_stack *b)
 		else if (ft_strcmp(instr, "rra") == 0 || ft_strcmp(instr, "rrb") == 0
 				|| ft_strcmp(instr, "rrr") == 0)
 			ft_reverse(a, b, instr);
-		else if (ft_strcmp(instr, "exit") == 0)
-			break ;
 		else
 			ft_putendl("Error: invalid input");
 		free(instr);
 	}
 	issorted(a) ? ft_putendl("OK") : ft_putendl("KO");
 	return (0);
-}
-
-int		adder(t_stack *a, char **s, int i)
-{
-	int hold;
-
-	hold = 0;
-	while (i)
-	{
-		if ((hold = ft_atoi(s[i])))
-			addstack(a, hold);
-		else
-		{
-			ft_putendl("Error: May contain values which are not intergers!");
-			free(a);
-			return (0);
-		}
-		i--;
-	}
-	return (1);
 }
 
 int		main(int argc, char **argv)

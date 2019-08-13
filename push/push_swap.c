@@ -6,57 +6,45 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 13:29:24 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/07/22 17:45:34 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/13 13:06:39 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../includes/push_swap.h"
 
-int		positiont(t_stack *a, int chunk)
+int		issorted(t_stack *a)
 {
+	int sort;
 	int i;
 
 	i = 0;
-	while (a->data[i])
+	sort = 0;
+	while (i < a->top)
 	{
-		if (a->data[i] >= chunk && a->data[i] <= chunk + 20)
-			return (i);
+		if (a->data[i] > a->data[i + 1])
+			sort = 1;
+		else
+			sort = 0;
 		i++;
 	}
-	return (-1);
-
+	return (sort);
 }
 
-int		positionb(t_stack *a, int chunk)
+void	push_swap(t_stack *a)
 {
-	int i;
-	i = a->top;
-	while (a->data[i])
-	{
-		if(a->data[i] >= chuck && a->dta[i] <= chunk + 20)
-			return (i);
-		i++;
-	}
-}
-
-void	push_swap(t_stack *a, t_stack *b)
-{
-	int post;
-	int posb;
-	int chunk;
-	int div;
-
-	chunk = 0;
-	div = a->top / 2;
-	post = positiont(a, chunk);
-	posb = positionb(a, chunk);
-	if (post )
+	if (a->top == 2)
+		sort_3(a);
+	/*else if (a->top == 4)
+		sort_5(a);
+	else if (a->top == 99)
+		sort_100(a);
+	else if (a->top == 499)
+		sort_500(a);*/
 }
 
 int		main(int c, char **argv)
 {
 	t_stack *a;
-	t_stack *b;
 	int		i;
 
 	i = 1;
@@ -65,12 +53,12 @@ int		main(int c, char **argv)
 	else
 	{
 		a = newstack(c);
-		b = newstack(c);
 		i = c - 1;
 		if (isdublicate(argv))
 		{
 			if (adder(a, argv, i))
-				push_swap(a, b);
+				if (!issorted(a))
+					push_swap(a);
 		}
 		else
 			ft_putendl("Error: May contain dublicate values!");
