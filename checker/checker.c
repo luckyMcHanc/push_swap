@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 13:17:51 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/13 13:29:33 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/13 17:01:25 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		issorted(t_stack *a)
 		if (a->data[i] > a->data[i + 1])
 			sort = 1;
 		else
-			sort = 0;
+			return (0);
 		i++;
 	}
 	return (sort);

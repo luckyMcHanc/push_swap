@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 13:29:24 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/13 13:06:39 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/13 16:44:00 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		issorted(t_stack *a)
 		if (a->data[i] > a->data[i + 1])
 			sort = 1;
 		else
-			sort = 0;
+			return (0);
 		i++;
 	}
 	return (sort);
@@ -34,12 +34,12 @@ void	push_swap(t_stack *a)
 {
 	if (a->top == 2)
 		sort_3(a);
-	/*else if (a->top == 4)
+	else if (a->top == 4)
 		sort_5(a);
-	else if (a->top == 99)
-		sort_100(a);
-	else if (a->top == 499)
-		sort_500(a);*/
+	//else if (a->top == 99)
+	// sort_100(a);
+	//else if (a->top == 499)
+	//	sort_500(a);
 }
 
 int		main(int c, char **argv)

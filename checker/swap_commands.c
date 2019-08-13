@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 16:55:11 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/13 13:29:24 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/13 16:00:20 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	ft_swapf(t_stack *a)
 	tmp = a->data[a->top - 1];
 	a->data[a->top - 1] = a->data[a->top];
 	a->data[a->top] = tmp;
-	free (tmp);
 }
 
 void	*ft_swab(t_stack *a, t_stack *b, char *instr)
