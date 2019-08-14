@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 11:01:28 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/13 17:24:23 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/14 12:14:06 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	sort_5(t_stack *a)
 	else if (a->data[4] > a->data[2] && a->data[4] < a->data[1])
 		ft_putstr("sa\npb\nsa\npa\n");
 	else if (a->data[4] > a->data[1] && a->data[4] < a->data[0])
-		ft_putstr("rra\npb\nsa\npa\nsa\n");
+		ft_putstr("rra\npb\nra\npa\nra\n");
 	else if (a->data[4] > a->data[0])
 		ft_putendl("ra");
 }
