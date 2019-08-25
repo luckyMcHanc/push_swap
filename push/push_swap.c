@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 13:29:24 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/13 16:44:00 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/25 16:46:30 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	push_swap(t_stack *a)
 		sort_3(a);
 	else if (a->top == 4)
 		sort_5(a);
-	//else if (a->top == 99)
-	// sort_100(a);
+	else if (a->top > 4)
+		 sort_100(a);
 	//else if (a->top == 499)
 	//	sort_500(a);
 }

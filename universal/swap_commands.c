@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 16:55:11 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/13 16:00:20 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/25 16:43:21 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_swapf(t_stack *a)
 {
 	int tmp;
 
-	tmp = (int)malloc(sizeof(int) * 2);
 	tmp = a->data[a->top - 1];
 	a->data[a->top - 1] = a->data[a->top];
 	a->data[a->top] = tmp;
