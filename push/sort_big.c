@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 15:02:03 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/25 17:33:24 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/26 15:56:41 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		find_num_bottom(t_stack *a, int chunk, int *hold)
 	}
 	return (0);
 }
-*/
+
 void	ft_print(int v, char *s, t_stack *a, int n, t_stack *b)
 {
 	int i = 0;
@@ -118,7 +118,7 @@ void	sort_100(t_stack *a)
 	i = 0;
 	b = newstack(a->top); 
 	mid = sort_list(a);
-/*	while (i <= a->top)
+	while (i <= a->top)
 	{
 		if (a->data[i] > mid)
 		{
@@ -128,5 +128,5 @@ void	sort_100(t_stack *a)
 				ft_print(a->data[i], "rra", a, i, b);
 		}
 		i++;
-	}*/
-}
+	}
+}*/

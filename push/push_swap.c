@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 13:29:24 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/25 16:46:30 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/26 15:31:51 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,20 @@ int		issorted(t_stack *a)
 	return (sort);
 }
 
-void	push_swap(t_stack *a)
+void	push_swap(t_stack *a, t_stack *b)
 {
 	if (a->top == 2)
 		sort_3(a);
 	else if (a->top == 4)
 		sort_5(a);
 	else if (a->top > 4)
-		 sort_100(a);
-	//else if (a->top == 499)
-	//	sort_500(a);
+		 sort_100(a, b);
 }
 
 int		main(int c, char **argv)
 {
 	t_stack *a;
+	t_stack *b;
 	int		i;
 
 	i = 1;
@@ -53,12 +52,13 @@ int		main(int c, char **argv)
 	else
 	{
 		a = newstack(c);
+		b = newstack(c);
 		i = c - 1;
 		if (isdublicate(argv))
 		{
 			if (adder(a, argv, i))
 				if (!issorted(a))
-					push_swap(a);
+					push_swap(a, b);
 		}
 		else
 			ft_putendl("Error: May contain dublicate values!");

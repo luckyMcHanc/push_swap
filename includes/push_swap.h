@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 13:27:08 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/25 16:43:47 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/26 15:56:12 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void			printstack(t_stack *a);
 int				adder(t_stack *a, char **s, int i);
 void			sort_3(t_stack *a);
 void			sort_5(t_stack *a);
-void			sort_100(t_stack *a);
+void			sort_100(t_stack *a, t_stack *b);
 void			removestack(t_stack *a, int i);
 void			ft_rot(t_stack *a);
 void			ft_rev(t_stack *a);
