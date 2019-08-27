@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:28:28 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/26 17:06:13 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/27 11:55:16 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ int		find_smallest(t_stack *a)
 		}
 		i++;
 	}
-	ft_putnbr(x);
-	ft_putstr("\n");
 	return (x);
 }
+
 int		find_big(t_stack *a)
 {
 	int i;
@@ -47,22 +46,18 @@ int		find_big(t_stack *a)
 		}
 		i++;
 	}
-	ft_putnbr(x);
 	return (x);
 }
 
-void	chuck_size(t_stack *a, t_stack *b)
+int		chunk_size(t_stack *a)
 {
 	t_stack *tmp;
 	int i;
 	int x;
 	int c;
-	int j;
 
 	i = a->top;
 	x = 0;
-	c = 0;
-	j = 1;
 	tmp = newstack(a->top + 1);
 	while (i != -1)
 	{
@@ -72,12 +67,38 @@ void	chuck_size(t_stack *a, t_stack *b)
 	}
 	c = (find_big(tmp) - find_smallest(tmp)) / 5;
 	free(tmp);
-	chunk[0] = c;
-	while (j < 5)
-	{
-		chunk[j] = ch + 1;
-		ch = c + ch;
-		j++;
-	}
+	return (c);
+}
 
+int		*chunk_arr(t_stack *a)
+{
+	int *chunk;
+	int c;
+	int i;
+	int j;
+
+	chunk = (int *)malloc(sizeof(int) * 6);
+	c = chunk_size(a);
+	j = c;
+	i = 1;
+	chunk[0] = c;
+	while (i < 5)
+	{
+		j = j + c + 1; 
+		chunk[i] = j;
+		i++;
+	}
+	chunk[i] = '\0';
+	return (chunk);
+}
+
+void	sort_100(t_stack *a, t_stack *b)
+{
+	int *chunk;
+	int i = 0;
+
+	chunk = chunk_arr(a);
+	
+	while (i < 5)
+		ft_putnbr(chunk[i++]);
 }
