@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 13:27:08 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/27 16:17:04 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/28 14:20:21 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ void			removestack(t_stack *a, int i);
 void			ft_move(t_stack *a, t_stack *b, int v, char *in);
 int				find_top(t_stack *a, int s, int e);
 int				find_bottom(t_stack *a, int s, int e);
-
+void			ft_move_back(t_stack *a, t_stack *b);
 #endif

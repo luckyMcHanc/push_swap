@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:27:04 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/27 18:29:33 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/28 15:48:53 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 int		find_bottom(t_stack *a, int s, int end)
 {
 	int i;
+	int x;
 
 	i = 0;
-	while (i < (a->top + 1) / 2)
+	x = (a->top + 1) / 2;
+	if (x % 2 != 0)
+		x = x + 1;
+	while (i < x)
 	{
-		if (a->data[i] >= s && a->data[i] < end)
+		if (a->data[i] >= s && a->data[i] <= end)
 			return (i);
 		i++;
 	}
@@ -30,12 +34,16 @@ int 	find_top(t_stack *a, int s, int end)
 {
 	int x;
 	int i;
+	int y;
 
 	x = 0;
 	i = a->top;
-	while (i > (a->top + 1) / 2)
+	y = (a->top + 1) / 2;
+	if (y % 2 != 0)
+		y = y + 1;
+	while (i > y)
 	{
-		if (a->data[i] >= s && a->data[i] < end)
+		if (a->data[i] >= s && a->data[i] <= end)
 			return (x);
 		i--;
 		x++;

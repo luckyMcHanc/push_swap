@@ -6,14 +6,12 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:28:28 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/27 18:35:10 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/28 16:01:38 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/push_swap.h" 
 #include <stdio.h>
-
-
 int		find_smallest(t_stack *a)
 {
 	int i;
@@ -45,7 +43,7 @@ int		find_big(t_stack *a)
 		if (x < a->data[i])
 		{
 			x = a->data[i];
-		   i = 0;	
+			i = 0;	
 		}
 		i++;
 	}
@@ -75,10 +73,10 @@ int		chunk_size(t_stack *a)
 
 int		*chunk_arr(t_stack *a)
 {
-	int *chunk;
 	int c;
 	int i;
 	int j;
+	int *chunk;
 
 	chunk = (int *)malloc(sizeof(int) * 7);
 	c = chunk_size(a);
@@ -92,7 +90,6 @@ int		*chunk_arr(t_stack *a)
 		i++;
 	}
 	chunk[i] = '\0';
-	i = 0;
 	return (chunk);
 }
 
@@ -100,7 +97,6 @@ void	sort_100(t_stack *a, t_stack *b)
 {
 	int *chunk;
 	int i;
-	int v;
 	int top;
 	int bot;
 
@@ -114,9 +110,16 @@ void	sort_100(t_stack *a, t_stack *b)
 		bot = find_bottom(a, chunk[i], chunk[i + 1]);
 		if (top == -1 && bot == -1)
 			i++;
-		else if (top < bot || top == bot)
+		else if ((top < bot || top == bot) && top != -1)
 			ft_move(a, b, top, "ra");
-		else
+		else if (top > bot && bot != -1)
+			ft_move(a, b, bot, "rra");
+		else if (bot == -1 && bot < top)
+			ft_move(a, b, top, "ra");
+		else if (top == -1 && top < bot)
 			ft_move(a, b, bot, "rra");
 	}
+	free(chunk);
+	ft_move(a, b, 0, "ra");
+	ft_move_back(a, b);
 }
