@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 16:55:11 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/25 16:43:21 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/29 14:08:13 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	*ft_swab(t_stack *a, t_stack *b, char *instr)
 	}
 	else if (ft_strcmp(instr, "sb") == 0)
 	{
-		ft_putnbr(b->top);
 		if (isempty(b) == 0)
 			ft_swapf(b);
 	}

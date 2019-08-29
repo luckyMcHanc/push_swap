@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:27:04 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/28 15:48:53 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/29 14:08:56 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,11 @@ void	ft_move(t_stack *a, t_stack *b, int v, char *in)
 			i++;
 		}
 	}
+//	if (b->data[b->top] < b->data[b->top - 1])
+//	{
+//		ft_putendl("sb");
+//		ft_swab(a, b, "sb");
+//	}
 	ft_putendl("pb");
 	ft_push(a, b, "pb");
 }

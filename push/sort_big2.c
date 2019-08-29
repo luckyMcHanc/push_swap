@@ -6,12 +6,12 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:28:28 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/28 16:01:38 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/29 14:49:03 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h" 
-#include <stdio.h>
+
 int		find_smallest(t_stack *a)
 {
 	int i;
@@ -78,7 +78,7 @@ int		*chunk_arr(t_stack *a)
 	int j;
 	int *chunk;
 
-	chunk = (int *)malloc(sizeof(int) * 7);
+	chunk = (int *)malloc(sizeof(int) * 8);
 	c = chunk_size(a);
 	j = c;
 	i = 1;
@@ -122,4 +122,5 @@ void	sort_100(t_stack *a, t_stack *b)
 	free(chunk);
 	ft_move(a, b, 0, "ra");
 	ft_move_back(a, b);
+	i = b->top;
 }
