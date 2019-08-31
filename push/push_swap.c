@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 13:29:24 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/29 11:39:18 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/31 17:22:29 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	push_swap(t_stack *a, t_stack *b)
 	else if (a->top == 4)
 		sort_5(a);
 	else if (a->top > 4)
-		 sort_100(a, b);
+		sort_100(a, b);
 }
 
 int		main(int c, char **argv)
@@ -48,7 +48,7 @@ int		main(int c, char **argv)
 
 	i = 1;
 	if (c == 1)
-		ft_putendl("Error: Too few Arguments passed!");
+		ft_putendl("Error");
 	else
 	{
 		a = newstack(c);
@@ -61,7 +61,7 @@ int		main(int c, char **argv)
 					push_swap(a, b);
 		}
 		else
-			ft_putendl("Error: May contain dublicate values!");
+			ft_putendl("Error");
 	}
 	return (0);
 }

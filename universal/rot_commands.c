@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 13:36:32 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/29 12:31:10 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/31 17:53:13 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_reverse(t_stack *a, t_stack *b, char *instr)
 {
 	if (ft_strcmp(instr, "rra") == 0)
 		ft_rev(a);
-	else if (ft_strcmp(instr, "rrb"))
+	else if (ft_strcmp(instr, "rrb") == 0)
 		ft_rev(b);
 	else
 	{

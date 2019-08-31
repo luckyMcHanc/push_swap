@@ -6,98 +6,85 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 14:00:59 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/29 14:45:04 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/31 17:57:42 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		big_index(t_stack *a, int i)
+int		find_index(int x, t_stack *b)
 {
-	int x;
+	int i;
 
-	x = 0;
-	while (a->data[x])
+	i = 0;
+	while (b->data[i])
 	{
-		if (a->data[x] == i)
-			return (x);
-		x++;
+		if (b->data[i] == x)
+			return (i);
+		i++;
 	}
 	return (-1);
 }
 
-int		find_big_i(t_stack *a)
+int		find_big_i(t_stack *b)
 {
 	int i;
-	int j;
 	int x;
-	x = a->data[0];
-	while (i <= a->top)
+
+	i = 0;
+	x = b->data[0];
+	while (i <= b->top)
 	{
-		if (x < a->data[i])
-		{
-			x = a->data[i];
-			i = 0;
-		}
+		if (x < b->data[i])
+			x = b->data[i];
 		i++;
 	}
-	j = big_index(a, x);
-	return (j);
+	i = find_index(x, b);
+	return (i);
+}
+
+void	ft_revmid(t_stack *a, t_stack *b, int x)
+{
+	int i;
+
+	i = 0;
+	while (i <= x)
+	{
+		ft_putendl("rrb");
+		ft_reverse(a, b, "rrb");
+		i++;
+	}
 }
 
 void	ft_moveb(t_stack *a, t_stack *b)
 {
 	int i;
-	int big;
+	int x;
+	int mid;
 
-	i = b->top;
-	big = find_big_i(b);
-	if (big > i / 2)
+	i = 0;
+	x = find_big_i(b);
+	mid = b->top / 2;
+	if (x > mid || x == mid)
 	{
-		while (i != big)
+		while (x < b->top)
 		{
 			ft_putendl("rb");
 			ft_rotate(a, b, "rb");
-			i--;
+			x++;
 		}
 	}
-	else if (big < i / 2)
-	{
-	//	if (big > 0)
-	//	{
-			while (big != 0)
-			{
-				ft_putendl("rrb");
-				ft_rotate(a, b, "rrb");
-				big--;
-			}
-	//	}
-	//	else
-	//	{
-	//		ft_putendl("rrb");
-	//		ft_rotate(a, b, "rrb");
-	//	}
-	}
+	else if (x < mid)
+		ft_revmid(a, b, x);
 	ft_putendl("pa");
 	ft_push(a, b, "pa");
 }
 
-void	ft_move_back(t_stack*a, t_stack *b)
+void	ft_move_back(t_stack *a, t_stack *b)
 {
 	int i;
 
-	free(a);
 	i = 0;
-	while(b->data[i])
-		ft_putendl(ft_itoa(b->data[i++]));
-	ft_putendl("\n");
-	a = newstack(b->top);
-	while (b->top != -1)
-	{
+	while (b->top > -1)
 		ft_moveb(a, b);
-	}
-	i = 0;
-	while (a->data[i])
-		ft_putendl(ft_itoa(a->data[i++]));
-//	ft_putnbr(big);
 }

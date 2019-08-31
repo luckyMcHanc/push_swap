@@ -1,132 +1,126 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_big.c                                         :+:      :+:    :+:   */
+/*   sort_big2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/15 15:02:03 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/28 10:25:15 by lmhlanga         ###   ########.fr       */
+/*   Created: 2019/08/26 15:28:28 by lmhlanga          #+#    #+#             */
+/*   Updated: 2019/08/31 18:01:38 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-#include <stdio.h>
-/*
-int			check_exist(int a, int *b)
-{
-	int i;
-	
-	i = 0;
-	while (b[i])
-		if (a == b[i++])
-			return (1);
-	return (-1);
-}
+#include "../includes/push_swap.h" 
 
-int		find_num_top(t_stack *a, int chunk, int *hold)
-{
-	int i;
-	int h;
-
-	i = 0;
-	h = a->top / 2;
-	while (i <= h)
-	{
-		if (a->data[i] >= chunk - 20 && a->data[i] < chunk)
-			if (!check_exist(a->data[i], hold))
-				return (i);
-		i++;
-	}
-	return (-1);
-}
-
-int		find_num_bottom(t_stack *a, int chunk, int *hold)
+int		find_smallest(t_stack *a)
 {
 	int i;
 	int x;
 
-	i = 99;
+	i = 0;
+	x = a->data[0];
+	while (a->data[i])
+	{
+		if (x > a->data[i])
+		{
+			x = a->data[i];
+			i = 0;
+		}
+		i++;
+	}
+	return (x);
+}
+
+int		find_big(t_stack *a)
+{
+	int i;
+	int x;
+
+	i = 0;
+	x = a->data[0];
+	while (a->data[i])
+	{
+		if (x < a->data[i])
+		{
+			x = a->data[i];
+			i = 0;	
+		}
+		i++;
+	}
+	return (x);
+}
+
+int		chunk_size(t_stack *a)
+{
+	t_stack *tmp;
+	int i;
+	int x;
+	int c;
+
+	i = a->top;
 	x = 0;
-	while (i > a->top / 2)
+	tmp = newstack(a->top + 1);
+	while (i != -1)
 	{
-		if (a->data[i] >= chunk - 20 && a->data[i] < chunk)
-			if (!check_exist(a->data[i], hold))
-				return (x);
-		i++ ;
+		tmp->data[x] = a->data[i];
 		x++;
+		i--;
 	}
-	return (0);
+	c = (find_big(tmp) - find_smallest(tmp)) / 5;
+	free(tmp);
+	return (c);
 }
 
-void	ft_print(int v, char *s, t_stack *a, int n, t_stack *b)
+int		*chunk_arr(t_stack *a)
 {
-	int i = 0;
-	while (i < n - 1)
-	{
-		ft_putendl(s);
-		if (ft_strcmp("ra", s) == 0)
-			ft_rot(a);
-		else
-			ft_rev(a);
-		i++;
-	}
-	ft_putendl("pb");
-	ft_pu(a, b);
-}
-
-int		sort_list(t_stack *a)
-{
-	int *tmp;
+	int c;
 	int i;
-	int tmpv;
 	int j;
+	int *chunk;
 
-	tmpv = 0;
-	j = 0;
-	tmp = (int *)malloc(sizeof(int) * a->top + 1);
-	while(a->data[i])
+	chunk = (int *)malloc(sizeof(int) * 8);
+	c = chunk_size(a);
+	j = c;
+	i = 1;
+	chunk[0] = find_smallest(a);
+	while (i < 8)
 	{
-		tmp[i] = a->data[i];
+		j = chunk[i - 1] + c + 1; 
+		chunk[i] = j;
 		i++;
 	}
-	i = 0;
-	while (j < a->top)
-	{
-		while (i < a->top - 1)
-		{
-			if (tmp[i]	> tmp[i + 1])
-			{
-				tmpv = tmp[i];
-				tmp[i] = tmp[i + 1];
-				tmp[i + 1] = tmpv;
-			}
-			i++;
-		}
-		j++;
-	}
-	printf("%d\n", tmp[2]);
-	return (tmp[i / 2]);
+	chunk[i] = '\0';
+	return (chunk);
 }
 
-void	sort_100(t_stack *a)
+void	sort_100(t_stack *a, t_stack *b)
 {
-	int mid;
+	int *chunk;
 	int i;
-	t_stack *b;
+	int top;
+	int bot;
 
 	i = 0;
-	b = newstack(a->top); 
-	mid = sort_list(a);
-	while (i <= a->top)
+	top = 0;
+	bot = 0;
+	chunk = chunk_arr(a);
+	while (i < 8)
 	{
-		if (a->data[i] > mid)
-		{
-			if (i < a->top / 2)
-				ft_print(a->data[i], "ra", a, i, b);
-			else
-				ft_print(a->data[i], "rra", a, i, b);
-		}
-		i++;
+		top = find_top(a, chunk[i], chunk[i + 1]);
+		bot = find_bottom(a, chunk[i], chunk[i + 1]);
+		if (top == -1 && bot == -1)
+			i++;
+		else if ((top < bot || top == bot) && top != -1)
+			ft_move(a, b, top, "ra");
+		else if (top > bot && bot != -1)
+			ft_move(a, b, bot, "rra");
+		else if (bot == -1 && bot < top)
+			ft_move(a, b, top, "ra");
+		else if (top == -1 && top < bot)
+			ft_move(a, b, bot, "rra");
 	}
-}*/
+	free(chunk);
+	ft_move(a, b, 0, "ra");
+	ft_move_back(a, b);
+	i = b->top;
+}

@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 13:09:24 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/13 13:17:41 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/08/31 16:29:57 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,18 @@ int		adder(t_stack *a, char **s, int i)
 	hold = 0;
 	while (i)
 	{
-		if (ft_atoi(s[i]) == 0)
-			addstack(a, ft_atoi(s[i]));
-		else if ((hold = ft_atoi(s[i])))
+		if (!ft_strcmp(s[i], "-2147483648") ||
+				!ft_strcmp(s[i], "2147483647"))
+		{
+			ft_putendl("Error");
+			free(a);
+			return (0);
+		}
+		else if ((hold = ft_atoi(s[i])) || ft_atoi(s[i]) == 0)
 			addstack(a, hold);
 		else
 		{
-			ft_putendl("Error: May Contain values which are not intergers!");
+			ft_putendl("Error");
 			free(a);
 			return (0);
 		}
