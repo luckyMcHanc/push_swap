@@ -6,11 +6,11 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:28:28 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/31 18:01:38 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/01 15:17:01 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h" 
+#include "../includes/push_swap.h"
 
 int		find_smallest(t_stack *a)
 {
@@ -43,7 +43,7 @@ int		find_big(t_stack *a)
 		if (x < a->data[i])
 		{
 			x = a->data[i];
-			i = 0;	
+			i = 0;
 		}
 		i++;
 	}
@@ -52,22 +52,17 @@ int		find_big(t_stack *a)
 
 int		chunk_size(t_stack *a)
 {
-	t_stack *tmp;
-	int i;
-	int x;
-	int c;
+	int		i;
+	int		x;
+	int		c;
 
 	i = a->top;
 	x = 0;
-	tmp = newstack(a->top + 1);
-	while (i != -1)
-	{
-		tmp->data[x] = a->data[i];
-		x++;
-		i--;
-	}
-	c = (find_big(tmp) - find_smallest(tmp)) / 5;
-	free(tmp);
+
+	if (a->top < 300)
+		c = (find_big(a) - find_smallest(a)) / 5;
+	else
+		c = (find_big(a) - find_smallest(a)) / 11;
 	return (c);
 }
 
@@ -78,18 +73,17 @@ int		*chunk_arr(t_stack *a)
 	int j;
 	int *chunk;
 
-	chunk = (int *)malloc(sizeof(int) * 8);
+	chunk = (int *)malloc(sizeof(int) * 14);
 	c = chunk_size(a);
 	j = c;
 	i = 1;
 	chunk[0] = find_smallest(a);
-	while (i < 8)
+	while (i < 14)
 	{
-		j = chunk[i - 1] + c + 1; 
+		j = chunk[i - 1] + c + 1;
 		chunk[i] = j;
 		i++;
 	}
-	chunk[i] = '\0';
 	return (chunk);
 }
 
@@ -101,10 +95,8 @@ void	sort_100(t_stack *a, t_stack *b)
 	int bot;
 
 	i = 0;
-	top = 0;
-	bot = 0;
 	chunk = chunk_arr(a);
-	while (i < 8)
+	while (i < 14)
 	{
 		top = find_top(a, chunk[i], chunk[i + 1]);
 		bot = find_bottom(a, chunk[i], chunk[i + 1]);
@@ -122,5 +114,4 @@ void	sort_100(t_stack *a, t_stack *b)
 	free(chunk);
 	ft_move(a, b, 0, "ra");
 	ft_move_back(a, b);
-	i = b->top;
 }

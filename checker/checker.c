@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 13:17:51 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/08/25 14:22:49 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/01 15:22:03 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,5 @@ int		main(int argc, char **argv)
 		else
 			ft_putendl("Error: May Contain dublicate values!");
 	}
-	sleep(30);
 	return (0);
 }
