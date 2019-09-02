@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 13:17:51 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/09/01 15:22:03 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/02 14:52:18 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		checker(t_stack *a, t_stack *b)
 				|| ft_strcmp(instr, "rrr") == 0)
 			ft_reverse(a, b, instr);
 		else
-			ft_putendl("Error: invalid input");
+			ft_putendl("Error");
 		free(instr);
 	}
 	issorted(a) ? ft_putendl("OK") : ft_putendl("KO");
@@ -61,23 +61,24 @@ int		main(int argc, char **argv)
 	t_stack *b;
 	int		i;
 
-	i = 1;
-	if (argc < 2)
-		ft_putendl("Error: No arguments passed");
-	else
+	i = argc - 2;
+	if (argc == 1)
+		ft_putendl("Error");
+	else if (argc == 2)
 	{
-		a = newstack(argc);
-		b = newstack(argc);
-		while (argv[i])
-			i++;
-		i--;
-		if (isdublicate(argv))
-		{
-			if (adder(a, argv, i))
-				checker(a, b);
-		}
-		else
-			ft_putendl("Error: May Contain dublicate values!");
+		argv = fix_strl(argv[1]);
+		i = newlen(argv);
 	}
+	else
+		argv = removearg(argv, i);
+	a = newstack(argc + 1);
+	b = newstack(argc + 1);
+	if (isdublicate(argv))
+	{
+		if (adder(a, argv, i))
+			checker(a, b);
+	}
+	else
+		ft_putendl("Error");
 	return (0);
 }

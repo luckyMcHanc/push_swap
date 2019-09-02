@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 13:27:08 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/09/02 12:04:26 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/02 14:31:51 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,6 @@ int				find_top(t_stack *a, int s, int e);
 int				find_bottom(t_stack *a, int s, int e);
 void			ft_move_back(t_stack *a, t_stack *b);
 char			**removearg(char **s, int i);
+char			**fix_strl(char *s);
+int				newlen(char **str);
 #endif
