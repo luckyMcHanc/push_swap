@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 13:29:24 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/09/02 14:47:41 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/02 17:26:35 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ int		main(int c, char **argv)
 
 	i = c - 2;
 	if (c == 1)
-		ft_putendl("Error");
+		return (0);
 	else if (c == 2)
 	{
 		argv = fix_strl(argv[1]);
 		i = newlen(argv);
 	}
 	else
-		argv = removearg(argv, i);
+		argv = removearg(argv);
 	a = newstack(i + 1);
 	b = newstack(i + 1);
 	if (isdublicate(argv))

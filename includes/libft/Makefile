@@ -6,7 +6,7 @@
 #    By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/31 11:49:15 by lmhlanga          #+#    #+#              #
-#    Updated: 2019/09/01 14:33:35 by lmhlanga         ###   ########.fr        #
+#    Updated: 2019/09/02 17:58:11 by lmhlanga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME	= libft.a
 
 SRC		= ft_atoi.c \
 		  ft_bzero.c \
+		  ft_isint.c \
 		  ft_isalnum.c \
 		  ft_isalpha.c \
 		  isdublicate.c \
@@ -57,6 +58,7 @@ SRC		= ft_atoi.c \
 		  ft_strstr.c \
 		  ft_strnstr.c \
 		  ft_strmap.c \
+		  ft_isprint.c \
 		  ft_strmapi.c \
 		  ft_strncat.c \
 		  ft_strncmp.c \

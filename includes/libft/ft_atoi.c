@@ -6,34 +6,35 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 08:56:36 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/07/08 12:05:21 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/02 18:06:48 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 int		ft_atoi(const char *str)
 {
 	size_t	res;
 	int		negative;
+	int		i;
 
+	i = 0;
 	negative = 1;
 	res = 0;
-	if (str)
+	while (str[i] && (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' ||
+				str[i] == '\v' || str[i] == '\f' || str[i] == '\r'))
+		++str;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		while (*str && (*str == ' ' || *str == '\n' || *str == '\t' ||
-			*str == '\v' || *str == '\f' || *str == '\r'))
-			++str;
-		if (*str == '-')
+		if (str[i] == '-')
 			negative = -1;
-		if (*str == '-' || *str == '+')
-			++str;
-		while (*str && *str >= '0' && *str <= '9')
-		{
-			res = res * 10 + (*str - 48);
-			++str;
-		}
-		return (res * negative);
+		i++;
 	}
-	return (0);
+	while (*str && *str >= '0' && *str <= '9')
+	{
+		res = res * 10 + (*str - 48);
+		++str;
+	}
+	return (res * negative);
 }

@@ -6,13 +6,13 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 13:09:24 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/09/02 14:49:54 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/02 18:03:58 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-char	**removearg(char **s, int x)
+char	**removearg(char **s)
 {
 	int		i;
 	char	**str;
@@ -35,21 +35,23 @@ int		adderf(t_stack *a, char **s, int i)
 	hold = 0;
 	while (i != -1)
 	{
-		if (!ft_strcmp(s[i], "-2147483648") || !ft_strcmp(s[i], "2147483647"))
+		if (ft_isint(s[i]))
 		{
-			ft_putendl("Error");
-			free(a);
-			return (0);
+			if ((hold = ft_atoi(s[i])) || ft_atoi(s[i]) == 0)
+				addstack(a, hold);
+			else
+			{
+				ft_putendl("Error");
+				free(a);
+				return (0);
+			}
+			i--;
 		}
-		else if ((hold = ft_atoi(s[i])) || ft_atoi(s[i]) == 0)
-			addstack(a, hold);
 		else
 		{
 			ft_putendl("Error");
-			free(a);
 			return (0);
 		}
-		i--;
 	}
 	return (1);
 }
