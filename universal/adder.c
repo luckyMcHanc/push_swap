@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 13:09:24 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/09/02 18:03:58 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/04 15:27:57 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,16 @@ int		adderf(t_stack *a, char **s, int i)
 	{
 		if (ft_isint(s[i]))
 		{
-			if ((hold = ft_atoi(s[i])) || ft_atoi(s[i]) == 0)
-				addstack(a, hold);
-			else
-			{
-				ft_putendl("Error");
-				free(a);
-				return (0);
-			}
-			i--;
+			hold = ft_atoi(s[i]);
+			addstack(a, hold);
 		}
 		else
 		{
-			ft_putendl("Error");
+			ft_putendl_fd("Error", 2);
+			free(a);
 			return (0);
 		}
+		i--;
 	}
 	return (1);
 }

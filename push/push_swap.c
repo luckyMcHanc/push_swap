@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 13:29:24 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/09/02 17:26:35 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/04 15:30:37 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		main(int c, char **argv)
 	int		i;
 
 	i = c - 2;
-	if (c == 1)
+	if (c == 1 || ft_strcmp(argv[1], "") == 0)
 		return (0);
 	else if (c == 2)
 	{
@@ -65,6 +65,6 @@ int		main(int c, char **argv)
 				push_swap(a, b);
 	}
 	else
-		ft_putendl("Error");
+		ft_putendl_fd("Error", 2);
 	return (0);
 }

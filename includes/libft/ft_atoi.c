@@ -17,19 +17,17 @@ int		ft_atoi(const char *str)
 {
 	size_t	res;
 	int		negative;
-	int		i;
 
-	i = 0;
 	negative = 1;
 	res = 0;
-	while (str[i] && (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' ||
-				str[i] == '\v' || str[i] == '\f' || str[i] == '\r'))
+	while (*str && (*str == ' ' || *str == '\n' || *str == '\t' ||
+				*str == '\v' || *str == '\f' || *str == '\r'))
 		++str;
-	if (str[i] == '-' || str[i] == '+')
+	if (*str == '-' || *str == '+')
 	{
-		if (str[i] == '-')
+		if (*str == '-')
 			negative = -1;
-		i++;
+		str++;
 	}
 	while (*str && *str >= '0' && *str <= '9')
 	{

@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 13:17:51 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/09/02 17:26:30 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/04 15:29:36 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		checker(t_stack *a, t_stack *b)
 			ft_reverse(a, b, instr);
 		else
 		{
-			ft_putendl("Error");
+			ft_putendl_fd("Error", 2);
 			return (0);
 		}
 		free(instr);
@@ -69,7 +69,7 @@ int		main(int argc, char **argv)
 	int		i;
 
 	i = argc - 2;
-	if (argc == 1)
+	if (argc == 1 || ft_strcmp("", argv[1]) == 0)
 		return (0);
 	else if (argc == 2)
 	{
@@ -80,12 +80,12 @@ int		main(int argc, char **argv)
 		argv = removearg(argv);
 	a = newstack(i + 1);
 	b = newstack(i + 1);
-	if (isdublicate(argv))
+	if (isdublicate(argv) && i != -1)
 	{
 		if (adder(a, argv, i))
 			checker(a, b);
 	}
 	else
-		ft_putendl("Error");
+		ft_putendl_fd("Error", 2);
 	return (0);
 }

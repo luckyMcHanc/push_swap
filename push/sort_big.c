@@ -95,7 +95,7 @@ void	sort_100(t_stack *a, t_stack *b)
 
 	i = 0;
 	chunk = chunk_arr(a);
-	while (i < 14)
+	while (i < 20)
 	{
 		top = find_top(a, chunk[i], chunk[i + 1]);
 		bot = find_bottom(a, chunk[i], chunk[i + 1]);
