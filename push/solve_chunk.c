@@ -23,7 +23,7 @@ int		find_bottom(t_stack *a, int s, int end)
 		x = x + 1;
 	while (i < x)
 	{
-		if (a->data[i] >= s && a->data[i] <= end)
+		if (a->data[i] >= s && a->data[i] < end)
 			return (i);
 		i++;
 	}
@@ -43,7 +43,7 @@ int		find_top(t_stack *a, int s, int end)
 		y = y + 1;
 	while (i > y)
 	{
-		if (a->data[i] >= s && a->data[i] <= end)
+		if (a->data[i] >= s && a->data[i] < end)
 			return (x);
 		i--;
 		x++;

@@ -17,7 +17,7 @@ int		find_index(int x, t_stack *b)
 	int i;
 
 	i = 0;
-	while (b->data[i])
+	while (i <= b->top)
 	{
 		if (b->data[i] == x)
 			return (i);

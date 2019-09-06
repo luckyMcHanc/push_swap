@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:28:28 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/09/02 14:43:51 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/06 14:24:20 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		find_smallest(t_stack *a)
 
 	i = 0;
 	x = a->data[0];
-	while (a->data[i])
+	while (i <= a->top)
 	{
 		if (x > a->data[i])
 		{
@@ -38,7 +38,7 @@ int		find_big(t_stack *a)
 
 	i = 0;
 	x = a->data[0];
-	while (a->data[i])
+	while (i <= a->top)
 	{
 		if (x < a->data[i])
 		{
@@ -59,7 +59,7 @@ int		chunk_size(t_stack *a)
 	i = a->top;
 	x = 0;
 	if (a->top < 300)
-		c = (find_big(a) - find_smallest(a)) / 5;
+		c = (find_big(a) - find_smallest(a)) / 4;
 	else
 		c = (find_big(a) - find_smallest(a)) / 11;
 	return (c);
@@ -77,7 +77,7 @@ int		*chunk_arr(t_stack *a)
 	j = c;
 	i = 1;
 	chunk[0] = find_smallest(a);
-	while (i < 14)
+	while (i < 15)
 	{
 		j = chunk[i - 1] + c + 1;
 		chunk[i] = j;
@@ -95,7 +95,7 @@ void	sort_100(t_stack *a, t_stack *b)
 
 	i = 0;
 	chunk = chunk_arr(a);
-	while (i < 20)
+	while (i < 15)
 	{
 		top = find_top(a, chunk[i], chunk[i + 1]);
 		bot = find_bottom(a, chunk[i], chunk[i + 1]);

@@ -34,7 +34,7 @@ void			ft_reverse(t_stack *a, t_stack *b, char *instr);
 void			printstack(t_stack *a);
 int				adder(t_stack *a, char **s, int i);
 void			sort_3(t_stack *a);
-void			sort_5(t_stack *a);
+void			sort_5(t_stack *a, t_stack *b);
 void			sort_100(t_stack *a, t_stack *b);
 void			removestack(t_stack *a, int i);
 void			ft_move(t_stack *a, t_stack *b, int v, char *in);

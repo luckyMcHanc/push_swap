@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 13:29:24 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/09/04 15:30:37 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/06 11:16:51 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ int		issorted(t_stack *a)
 
 void	push_swap(t_stack *a, t_stack *b)
 {
-	if (a->top == 2)
+	if (a->top == 1)
+		ft_putendl("sa");
+	else if (a->top == 2)
 		sort_3(a);
-	else if (a->top == 4)
-		sort_5(a);
-	else if (a->top > 4)
+	else if (a->top <= 9)
+		sort_5(a, b);
+	else
 		sort_100(a, b);
 }
 
@@ -49,15 +51,15 @@ int		main(int c, char **argv)
 	i = c - 2;
 	if (c == 1 || ft_strcmp(argv[1], "") == 0)
 		return (0);
-	else if (c == 2)
+	if (c == 2 && !argv[2])
 	{
 		argv = fix_strl(argv[1]);
 		i = newlen(argv);
 	}
 	else
 		argv = removearg(argv);
-	a = newstack(i + 1);
-	b = newstack(i + 1);
+	a = newstack(i + 2);
+	b = newstack(i + 2);
 	if (isdublicate(argv))
 	{
 		if (adder(a, argv, i))

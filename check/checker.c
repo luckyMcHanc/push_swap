@@ -71,16 +71,16 @@ int		main(int argc, char **argv)
 	i = argc - 2;
 	if (argc == 1 || ft_strcmp("", argv[1]) == 0)
 		return (0);
-	else if (argc == 2)
+	else if (argc == 2 && !argv[2])
 	{
 		argv = fix_strl(argv[1]);
 		i = newlen(argv);
 	}
 	else
 		argv = removearg(argv);
-	a = newstack(i + 1);
-	b = newstack(i + 1);
-	if (isdublicate(argv) && i != -1)
+	a = newstack(i + 2);
+	b = newstack(i + 2);
+	if (isdublicate(argv))
 	{
 		if (adder(a, argv, i))
 			checker(a, b);
