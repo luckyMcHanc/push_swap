@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 13:09:24 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/09/04 15:27:57 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/07 11:28:21 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int		adderf(t_stack *a, char **s, int i)
 
 int		adder(t_stack *a, char **s, int i)
 {
+	if (!s)
+		return (0);
 	if (adderf(a, s, i))
 		return (1);
 	return (0);
@@ -60,7 +62,7 @@ int		adder(t_stack *a, char **s, int i)
 
 char	**fix_strl(char *str)
 {
-	char **s;
+	char	**s;
 
 	s = ft_strsplit(str, ' ');
 	return (s);

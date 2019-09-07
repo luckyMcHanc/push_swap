@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:28:28 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/09/06 14:24:20 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/07 11:20:05 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		chunk_size(t_stack *a)
 	i = a->top;
 	x = 0;
 	if (a->top < 300)
-		c = (find_big(a) - find_smallest(a)) / 4;
+		c = (find_big(a) - find_smallest(a)) / 5;
 	else
 		c = (find_big(a) - find_smallest(a)) / 11;
 	return (c);

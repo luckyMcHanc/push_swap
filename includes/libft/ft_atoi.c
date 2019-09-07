@@ -13,26 +13,30 @@
 #include "libft.h"
 #include <stdio.h>
 
+int		ft_isdi(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
 int		ft_atoi(const char *str)
 {
-	size_t	res;
-	int		negative;
+	long	value;
+	int		sign;
 
-	negative = 1;
-	res = 0;
-	while (*str && (*str == ' ' || *str == '\n' || *str == '\t' ||
-				*str == '\v' || *str == '\f' || *str == '\r'))
-		++str;
+	value = 0;
+	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f'
+		|| *str == '\r' || *str == '\v')
+		str++;
+	if (*str == '-')
+		sign = -1;
+	else
+		sign = 1;
 	if (*str == '-' || *str == '+')
+		str++;
+	while (ft_isdi(*str))
 	{
-		if (*str == '-')
-			negative = -1;
+		value = value * 10 + (*str - '0');
 		str++;
 	}
-	while (*str && *str >= '0' && *str <= '9')
-	{
-		res = res * 10 + (*str - 48);
-		++str;
-	}
-	return (res * negative);
+	return (value * sign);
 }

@@ -21,7 +21,8 @@ SRC = push/push_swap.c \
 	  universal/adder.c \
 	  universal/ft_stack.c \
 	  universal/rot_commands.c \
-	  universal/swap_commands.c
+	  universal/swap_commands.c \
+	  universal/is_dublicate_a.c
       
 SRCO = *.o
               

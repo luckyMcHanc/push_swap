@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 11:01:28 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/09/06 11:13:14 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/07 11:14:12 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	sort_3(t_stack *a)
 	else if (a->data[2] < a->data[1] && a->data[1] > a->data[0]
 			&& a->data[2] > a->data[0])
 		ft_putendl("rra");
+	else if (a->data[2] > a->data[1] && a->data[1] > a->data[0])
+		ft_putendl("sa\nrra");
 }
 
 int		find_indexa(int x, t_stack *b)

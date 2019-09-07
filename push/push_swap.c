@@ -6,7 +6,7 @@
 /*   By: lmhlanga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 13:29:24 by lmhlanga          #+#    #+#             */
-/*   Updated: 2019/09/06 11:16:51 by lmhlanga         ###   ########.fr       */
+/*   Updated: 2019/09/07 11:37:45 by lmhlanga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		issorted(t_stack *a)
 
 	i = 0;
 	sort = 0;
+	if (a->top == 0)
+		return (1);
 	while (i < a->top)
 	{
 		if (a->data[i] > a->data[i + 1])
@@ -32,6 +34,8 @@ int		issorted(t_stack *a)
 
 void	push_swap(t_stack *a, t_stack *b)
 {
+	if (a->top == 0)
+		return ;
 	if (a->top == 1)
 		ft_putendl("sa");
 	else if (a->top == 2)
@@ -49,24 +53,23 @@ int		main(int c, char **argv)
 	int		i;
 
 	i = c - 2;
-	if (c == 1 || ft_strcmp(argv[1], "") == 0)
+	if (c == 1 || !ft_strcmp(argv[1], ""))
 		return (0);
-	if (c == 2 && !argv[2])
+	if (c == 2)
 	{
 		argv = fix_strl(argv[1]);
 		i = newlen(argv);
 	}
 	else
 		argv = removearg(argv);
-	a = newstack(i + 2);
-	b = newstack(i + 2);
-	if (isdublicate(argv))
+	if (i != -1)
 	{
+		a = newstack(i + 2);
+		b = newstack(i + 2);
 		if (adder(a, argv, i))
-			if (!issorted(a))
-				push_swap(a, b);
+			if (isdublicate_a(a))
+				if (!issorted(a))
+					push_swap(a, b);
 	}
-	else
-		ft_putendl_fd("Error", 2);
 	return (0);
 }

@@ -44,4 +44,5 @@ void			ft_move_back(t_stack *a, t_stack *b);
 char			**removearg(char **s);
 char			**fix_strl(char *s);
 int				newlen(char **str);
+int				isdublicate_a(t_stack *a);
 #endif
